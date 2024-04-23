@@ -8,7 +8,28 @@ public class Prob3 {
 
 		Scanner scanner = new Scanner(System.in);
 
-		/* 코드 작성 */
+		System.out.print("숫자를 입력하시오: ");
+		int number = scanner.nextInt();
+		
+		int sum = 0;
+		
+		if (number % 2 == 0) {
+			for (int i = 0; i <= number; i++) {
+				if (i % 2 == 0) {
+					sum += i;
+				}
+			}
+		}
+		else {
+			for (int i = 0; i <= number; i++) {
+				if (i % 2 != 0) {
+					sum += i;
+				}
+			}
+		}
+		
+		System.out.print("결과 값 : ");
+		System.out.print(sum);
 		
 		scanner.close();
 	}
