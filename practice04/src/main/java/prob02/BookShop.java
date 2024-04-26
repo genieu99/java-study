@@ -18,6 +18,8 @@ public class BookShop {
 		books[8] = new Book( 9,"태백산맥","조정래");
 		books[9] = new Book( 10,"풀하우스","원수연");
 		
+		displayBookInfo(books);
+		
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("대여 하고 싶은 책의 번호를 입력하세요:");
 		int num = scanner.nextInt();
@@ -32,17 +34,17 @@ public class BookShop {
         }
 		
 		// (2) Book 객체의 정보를 출력
-		System.out.println("*****도서 정보 출력하기******");
 		displayBookInfo( books );
 	}
 	
-	public static void displayBookInfo(Book[] books) {
+	private static void displayBookInfo(Book[] books) {
+		System.out.println("*****도서 정보 출력하기******");
         for (Book book : books) {
-            System.out.println("책 번호: " + book.getBookNo());
-            System.out.println("책 제목: " + book.getTitle());
-            System.out.println("저자: " + book.getAuthor());
+        	System.out.print("책번호: " + book.getBookNo());
+            System.out.print(", 책 제목: " + book.getTitle());
+            System.out.print(", 작가: " + book.getAuthor());
+            System.out.print(", 대여 유무: ");
             book.print();
-            System.out.println();
         }
     }
 }
