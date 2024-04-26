@@ -8,11 +8,12 @@ public class MyClassTest {
 		try {
 			new MyClass().danger();
 		} catch (IOException e) {
-			System.out.println("error:" + e);
+			// System.out.println("error:" + e);
 			e.printStackTrace();
 		}  catch (MyException e) {
 			System.out.println("error:" + e);
 		}
+		
 	}
 
 }

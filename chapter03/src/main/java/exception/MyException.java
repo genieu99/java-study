@@ -2,7 +2,7 @@ package exception;
 
 @SuppressWarnings("serial")
 public class MyException extends Exception {
-	public void MyExcepiton(String message) {
+	public MyExcepiton(String message) {
 		super(message);
 	}
 	
