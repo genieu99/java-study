@@ -17,6 +17,7 @@ public class QueueTest {
 			System.out.println(s);
 		}
 		
+		// 비어있는 경우 null을 반환
 		System.out.println(q.poll());
 		
 		q.offer("마이콜");
