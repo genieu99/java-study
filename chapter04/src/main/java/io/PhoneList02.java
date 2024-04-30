@@ -10,6 +10,7 @@ public class PhoneList02 {
 
 	public static void main(String[] args) {
 		Scanner scanner = null;
+		
 		try {
 			File file = new File("./phone.txt");
 			if (!file.exists()) {
