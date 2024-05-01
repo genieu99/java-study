@@ -60,8 +60,8 @@ public class TCPServer {
 				System.out.println("[server] error: " + e);
 			} finally {
 				try {
-					if (serverSocket != null && !serverSocket.isClosed()) {
-						serverSocket.close();
+					if (socket != null && !socket.isClosed()) {
+						socket.close();
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
