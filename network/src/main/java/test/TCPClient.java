@@ -8,8 +8,8 @@ import java.net.Socket;
 import java.net.SocketException;
 
 public class TCPClient {
-	private static String SERVER_IP = "127.0.0.1";
-	private static int SERVER_PORT = 5001;
+	private static final String SERVER_IP = "127.0.0.1";
+	private static final int SERVER_PORT = 5001;
 	
 	public static void main(String[] args) {
 		Socket socket = null;
