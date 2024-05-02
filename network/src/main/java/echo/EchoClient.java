@@ -7,6 +7,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Scanner;
 
 public class EchoClient {
@@ -35,12 +36,14 @@ public class EchoClient {
 				pw.println(line);
 				String data = br.readLine();  // blocking
 				if (data == null) {
-					log("suddenly closed by server");
+					log("closed by server");
 					break;
 				}
 				System.out.println("<<" + data);
 			}
 			
+		} catch (SocketException e) {
+			log("Socket Exception: " + e);
 		} catch (IOException e) {
 			log("error: " + e);
 		} finally {
@@ -57,7 +60,7 @@ public class EchoClient {
 	}
 	
 	private static void log(String message) {
-		System.out.println("[EchoClient]" + message);
+		System.out.println("[EchoClient] " + message);
 	}
 
 }
