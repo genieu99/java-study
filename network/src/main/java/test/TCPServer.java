@@ -38,7 +38,6 @@ public class TCPServer {
 				OutputStream os = socket.getOutputStream();
 				
 				while(true) {
-					System.out.println("try to read");
 					// 5. 데이터 읽기
 					byte[] buffer = new byte[256];
 					int readByteCount = is.read(buffer);  // blocking
@@ -62,6 +61,12 @@ public class TCPServer {
 					}
 					
 					os.write(data.getBytes("utf-8"));
+					
+					try {
+						Thread.sleep(1);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			} catch (SocketException e) {
 				System.out.println("[server] Socket Exception: " + e);
