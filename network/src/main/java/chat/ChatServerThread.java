@@ -89,7 +89,6 @@ public class ChatServerThread extends Thread {
 	}
 	
 	private void broadcast(String data) {
-		System.out.println(listWriters.size());
 		synchronized(listWriters) {
 			for (Writer writer : listWriters) {
 				PrintWriter printWriter = (PrintWriter)writer;
