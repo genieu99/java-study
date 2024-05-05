@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.io.Writer;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.util.Base64;
 import java.util.Scanner;
 
 public class ChatClient {
@@ -43,6 +44,7 @@ public class ChatClient {
 			// 7. 키보드 입력 처리
 			while (true) {
 				String input = scanner.nextLine();
+				String encodedMessage = Base64.getEncoder().encodeToString(input.getBytes("utf-8"));
 				
 				if ("quit".equals(input) == true) {
 					// 8. quit 프로토콜 처리
@@ -51,7 +53,7 @@ public class ChatClient {
 					break;
 				} else {
 					// 9. 메시지 처리
-					printWriter.println("message:" + input);
+					printWriter.println("message:" + encodedMessage);
 					printWriter.flush();
 				}
 			}

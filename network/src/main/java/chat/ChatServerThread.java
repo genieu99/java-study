@@ -10,6 +10,7 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.List;
 
 public class ChatServerThread extends Thread {
@@ -52,7 +53,8 @@ public class ChatServerThread extends Thread {
 				if ("join".equals(tokens[0])) {
 					doJoin(tokens[1], printWriter);
 				} else if ("message".equals(tokens[0])) {
-					sendMessage(tokens[1]);
+					String decodedMessage = new String(Base64.getDecoder().decode(tokens[1]));
+					sendMessage(decodedMessage);
 				} else if ("quit".equals(tokens[0])) {
 					doQuit(printWriter);
 				} else {

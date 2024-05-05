@@ -18,8 +18,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.Base64;
 
 import chat.ChatClientThread;
 import chat.ChatServer;
@@ -107,21 +109,27 @@ public class ChatWindow {
 	}
 	
 	private void sendMessage() {
-		String message = textField.getText();
-		if (message.isEmpty()) {
-			return;
-		} else if ("quit".equals(message)) {
-			printWriter.println("quit:");
+		try {
+			String message = textField.getText();
+			String encodedMessage = Base64.getEncoder().encodeToString(message.getBytes("utf-8"));
+			
+			if (encodedMessage.isEmpty()) {
+				return;
+			} else if ("quit".equals(message)) {
+				printWriter.println("quit:");
+		        printWriter.flush();
+		        System.exit(0);
+			}
+			System.out.println("메세지 보내는 프로토콜을 구현!: " + message);
+			
+			printWriter.println("message:" + encodedMessage);
 	        printWriter.flush();
-	        System.exit(0);
+			
+			textField.setText("");
+			textField.requestFocus();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
-		System.out.println("메세지 보내는 프로토콜을 구현!: " + message);
-		
-		printWriter.println("message:" + message);
-        printWriter.flush();
-		
-		textField.setText("");
-		textField.requestFocus();
 	}
 	
 	private void finish() {
